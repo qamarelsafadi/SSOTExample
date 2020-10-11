@@ -11,7 +11,7 @@ import net.qamar.ssotexample.data.model.Movie
 @Dao
 interface MovieDao{
     @get:Query("select * from Movie")
-    val all: LiveData<List<Movie?>?>?
+    val all: LiveData<List<Movie>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE )
     fun insert(t: Movie?)

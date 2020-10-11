@@ -19,7 +19,7 @@ class MovieRepository(private val  context: Context) : BaseRepository() {
     private val appDatabase = AppDatabase.getInstance(context)
      var movieDao = appDatabase!!.movieDao!!
 
-    fun getMoviesList(): LiveData<List<Movie?>?>? {
+    fun getMoviesList(): LiveData<List<Movie>> {
         val result = movieApi.movieList()
         result!!.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
             .subscribe({

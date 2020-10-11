@@ -8,6 +8,6 @@ import rx.Single
 
 interface MovieApi {
         @GET("/?s=Batman&page=1&apikey=96099fe3")
-        fun movieList(): Single<Response<SearchResult?>?>?
+        fun movieList(): Single<Response<SearchResult>>
 
 }
