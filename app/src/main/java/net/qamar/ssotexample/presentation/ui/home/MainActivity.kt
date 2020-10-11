@@ -1,6 +1,5 @@
 package net.qamar.ssotexample.presentation.ui.home
 
-import android.app.Application
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -14,9 +13,9 @@ class MainActivity : AppCompatActivity() {
 
         val viewModel = HomeViewModel(applicationContext)
 
-        viewModel.getMovies()!!.observe(this, Observer {
+        viewModel.getMovies().observe(this, Observer {
             for (i in it!!.indices) {
-                Log.e("qmrItems", "${it[i]!!.title}")
+                Log.e("qmrItems", "${it[i].title}")
             }
         })
     }

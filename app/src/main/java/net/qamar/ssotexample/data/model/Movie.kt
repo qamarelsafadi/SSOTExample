@@ -2,9 +2,7 @@ package net.qamar.ssotexample.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.google.gson.annotations.SerializedName
 import com.squareup.moshi.Json
-import com.squareup.moshi.ToJson
 
 
 @Entity

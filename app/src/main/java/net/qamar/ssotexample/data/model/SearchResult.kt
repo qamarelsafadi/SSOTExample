@@ -1,8 +1,4 @@
 package net.qamar.ssotexample.data.model
-
-
-import com.google.gson.annotations.JsonAdapter
-import com.google.gson.annotations.SerializedName
 import com.squareup.moshi.Json
 import java.util.*
 

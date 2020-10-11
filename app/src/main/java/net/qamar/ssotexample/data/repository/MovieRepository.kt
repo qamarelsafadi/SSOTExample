@@ -3,32 +3,38 @@ package net.qamar.ssotexample.data.repository
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
-import net.qamar.ssotexample.data.local.dao.MovieDao
 import net.qamar.ssotexample.data.local.database.AppDatabase
 import net.qamar.ssotexample.data.model.Movie
 import net.qamar.ssotexample.data.remote.api.MovieApi
-import rx.Scheduler
+import net.qamar.ssotexample.data.util.di.DaggerAppComponent
 import rx.android.schedulers.AndroidSchedulers
-import rx.functions.Action1
 import rx.schedulers.Schedulers
+import javax.inject.Inject
 
 
-class MovieRepository(private val  context: Context) : BaseRepository() {
-    private val movieApi = getRetrofitHelper()!!.getService(MovieApi::class.java)
+class MovieRepository(context: Context) {
+
+    @Inject
+     lateinit var  movieApi :MovieApi
 
     private val appDatabase = AppDatabase.getInstance(context)
-     var movieDao = appDatabase!!.movieDao!!
+     private var movieDao = appDatabase!!.movieDao!!
 
+    init {
+        DaggerAppComponent.create().inject(this)
+
+    }
     fun getMoviesList(): LiveData<List<Movie>> {
         val result = movieApi.movieList()
-        result!!.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+        result.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 if (!it!!.isSuccessful) {
 
-                    Log.e("qmr", "not respond");
+                    Log.e("qmr", "not respond")
 
                 } else {
-                    movieDao.insert(it.body()!!.search);
+
+                    movieDao.insert(it.body()!!.search)
                 }
 
             }, { throwable ->
