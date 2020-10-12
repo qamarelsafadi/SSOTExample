@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.getMovies().observe(this, Observer {
             for (i in it!!.indices) {
-                Log.e("qmrItems", "${it[i].title}")
+                Log.e("qmrItemsTitle", "${it[i].title}")
             }
         })
     }
