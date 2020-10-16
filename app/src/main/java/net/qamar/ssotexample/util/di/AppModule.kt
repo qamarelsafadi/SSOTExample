@@ -1,4 +1,4 @@
-package net.qamar.ssotexample.data.util.di
+package net.qamar.ssotexample.util.di
 
 import dagger.Module
 import dagger.Provides
@@ -11,6 +11,8 @@ class AppModule {
     @Singleton
     @Provides
     fun movieApi(): MovieApi = RetrofitHelper().getService(MovieApi::class.java)
+
+
 
 
 }

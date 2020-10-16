@@ -2,8 +2,7 @@ package net.qamar.ssotexample.data.remote
 
 
 import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import net.qamar.ssotexample.data.util.ThingArrayListMoshiAdapter
+import net.qamar.ssotexample.util.MoshiArrayListJsonAdapter
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -19,8 +18,7 @@ class RetrofitHelper {
     private val retrofit: Retrofit.Builder
     private var moshi =
         Moshi.Builder()
-            .add(ThingArrayListMoshiAdapter())
-            .add(KotlinJsonAdapterFactory())
+            .add(MoshiArrayListJsonAdapter.FACTORY)
             .build()!!
 
     fun <T> getService(tService: Class<T>?): T {

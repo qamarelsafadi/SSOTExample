@@ -17,5 +17,5 @@ interface MovieDao{
     fun insert(t: Movie?)
 
     @Insert(onConflict =OnConflictStrategy.REPLACE  )
-    fun insert(t: List<Movie?>?)
+    fun insert(t: List<Movie>)
 }

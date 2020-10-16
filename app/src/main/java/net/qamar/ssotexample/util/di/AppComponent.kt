@@ -1,4 +1,4 @@
-package net.qamar.ssotexample.data.util.di
+package net.qamar.ssotexample.util.di
 
 import dagger.Component
 import net.qamar.ssotexample.data.repository.MovieRepository
